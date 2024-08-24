@@ -35,4 +35,4 @@ jobs:
     needs: terraform-approval-gate
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Apply Terraform Plan...."
+      - run: echo "Apply Terraform Plan..."
