@@ -1,0 +1,16 @@
+name: deploy-eastus-nonprod
+
+on:
+  # workflow will be triggered manually
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  eastus-nonprod-deploy:
+    uses: ./.github/workflows/deploy-environment.yml
+    with:
+      environment: eastus-nonprod
+    secrets: inherit

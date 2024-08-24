@@ -1,0 +1,16 @@
+name: deploy-eastus-stage
+
+on:
+  # workflow will be triggered manually
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:    
+  eastus-stage-deploy:
+    uses: ./.github/workflows/deploy-environment.yml
+    with:
+      environment: eastus-stage
+    secrets: inherit

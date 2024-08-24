@@ -1,0 +1,16 @@
+name: deploy-eastus-prod
+
+on:
+  # workflow will be triggered manually
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  eastus-prod-deploy:
+    uses: ./.github/workflows/deploy-environment.yml
+    with:
+      environment: eastus-prod
+    secrets: inherit
