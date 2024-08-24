@@ -20,15 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Apply Terraform Plan..."
-
-  # eastus-nonprod-approval-gate:
-  #   environment: eastus-nonprod
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: approved
-  #       env: 
-  #         ENV_NAME: eastus-nonprod
-  #       run: write-host "Approve for $($env.ENV_NAME)"
+  eastus-nonprod-approval-gate:
+    environment: eastus-nonprod
+    runs-on: ubuntu-latest
+    steps:
+      - name: approved
+        env: 
+          ENV_NAME: eastus-nonprod
+        run: write-host "Approve for $($env.ENV_NAME)"
 
   # eastus-nonprod-deploy:
   #   needs: eastus-nonprod-approval-gate
