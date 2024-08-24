@@ -3,15 +3,6 @@ name: cicd (dev, qa, stage, prod)
 on:
   # workflow will be triggered manually
   workflow_dispatch:
-#   push:
-#     branches:
-#       - main
-#     paths-ignore:
-#       - .gitignore
-#       - LICENSE.md
-#       - README.md
-  
-  workflow_dispatch:
 
 defaults:
   run:
