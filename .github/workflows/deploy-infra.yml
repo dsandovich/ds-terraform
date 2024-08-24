@@ -1,0 +1,38 @@
+name: deploy-infra
+
+on:
+  # This is a reusable workflow
+  workflow_call:
+    inputs:
+      environment:
+        description: "Name of the environment to deploy"
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+defaults:
+  run:
+    shell: pwsh
+    
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+    environment: ${{inputs.environment}}
+    steps:
+      - run: echo "Generate Terraform Plan..."
+  terraform-approval-gate:
+    environment: ${{inputs.environment}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: approved
+        env: 
+          ENV_NAME: ${{inputs.environment}}
+        run: write-host "Approve for $($env.ENV_NAME)"
+  terraform-apply:
+    needs: terraform-approval-gate
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Apply Terraform Plan..."
