@@ -9,11 +9,6 @@ defaults:
     shell: pwsh
 
 jobs:
-  test-actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Apply Terraform Plan..."
-
   eastus-nonprod-approval-gate:
     environment: eastus-nonprod
     runs-on: ubuntu-latest
