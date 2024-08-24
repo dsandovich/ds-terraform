@@ -1,10 +1,10 @@
-# Dmitry Sandovich Personal Terraform
+# DS Terraform
 
-This repository contains terraform files to provision and manage Azure services.
+This repository contains Terraform files to provision services in Azure personal account.
 
 ## Pre-requisites
 
-## Ci/CD Pipeline
+## CI/CD Pipeline
 
 ### Steps
 
