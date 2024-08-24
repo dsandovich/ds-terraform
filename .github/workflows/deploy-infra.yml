@@ -24,6 +24,7 @@ jobs:
     steps:
       - run: echo "Generate Terraform Plan..."
   terraform-approval-gate:
+    needs: terraform-plan
     environment: ${{inputs.environment}}
     runs-on: ubuntu-latest
     steps:
