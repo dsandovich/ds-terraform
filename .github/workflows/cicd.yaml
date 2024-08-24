@@ -9,51 +9,19 @@ defaults:
     shell: pwsh
 
 jobs:
-  eastus-nonprod-approval-gate:
-    environment: eastus-nonprod
-    runs-on: ubuntu-latest
-    steps:
-      - name: approved
-        env: 
-          ENV_NAME: eastus-nonprod
-        run: write-host "Approve for $($env.ENV_NAME)"
-
   eastus-nonprod-deploy:
-    needs: eastus-nonprod-approval-gate
     uses: ./.github/workflows/deploy-environment.yml
     with:
       environment: eastus-nonprod
     secrets: inherit
-
-  eastus-stage-approval-gate:
-    needs: eastus-nonprod-deploy
-    environment: eastus-stage
-    runs-on: ubuntu-latest
-    steps:
-      - name: approved
-        env: 
-          ENV_NAME: eastus-stage
-        run: write-host "Approve for $($env.ENV_NAME)"
     
   eastus-stage-deploy:
-    needs: eastus-stage-approval-gate
     uses: ./.github/workflows/deploy-environment.yml
     with:
       environment: eastus-stage
     secrets: inherit
-
-  eastus-prod-approval-gate:
-    needs: eastus-stage-deploy
-    environment: eastus-prod
-    runs-on: ubuntu-latest
-    steps:
-      - name: approved
-        env: 
-          ENV_NAME: eastus-prod
-        run: write-host "Approve for $($env.ENV_NAME)"
     
   eastus-prod-deploy:
-    needs: eastus-prod-approval-gate
     uses: ./.github/workflows/deploy-environment.yml
     with:
       environment: eastus-prod
